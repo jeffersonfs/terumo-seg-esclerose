@@ -40,13 +40,15 @@ def get_data_cytomine(path_save, id_project, verbose=logging.INFO):
             geometry = wkt.loads(annotation.location)
             # Save image in directory
             path_file = path_save / "imgs" / f"{count:05d}.tiff"
-            image.download(path_file.as_posix())
+            if not path_file.exists():
+                image.download(path_file.as_posix())
 
             # Save mask in path
             mask = get_mask(geometry, image)
             path_file_mask = Path(path_save / "masks" / f"{count:05d}.png")
             path_file_mask.parent.mkdir(parents=True, exist_ok=True)
-            cv2.imwrite(path_file_mask.as_posix(), mask*255)
+            if not path_file_mask.exists():
+                cv2.imwrite(path_file_mask.as_posix(), mask*255)
 
             count += 1
 
@@ -58,10 +60,10 @@ def get_datasets():
         "he": config("CYTOMINE_PROJECT_NUMBER_HE"),
     }
     path_base = Path("./dist/datasets")
-    path_base.mkdir(parents=True,exist_ok=False)
+    path_base.mkdir(parents=True,exist_ok=True)
     for i in projects.keys():
         path_base_item = path_base / i
-        path_base_item.mkdir()
+        path_base_item.mkdir(exist_ok=True)
         get_data_cytomine(path_base_item, projects[i])
 
     zip_filename = './dist/datasets_esclerose.zip'
