@@ -1,5 +1,9 @@
-# This template is a low-dependency template. 
-# By default there is no requirements added here.
-# Add the requirements you need to this file.
-# or run `make init` to create this file automatically based on the template.
-# You can also run `make switch-to-poetry` to use the poetry package manager.
+python-decouple==3.8
+future
+requests-toolbelt
+opencv-python
+shapely
+--extra-index-url=https://packagecloud.io/cytomine-uliege/Cytomine-python-client/pypi/simple cytomine-python-client
+rasterio
+tqdm
+typer[all]
