@@ -7,3 +7,16 @@ shapely
 rasterio
 tqdm
 typer[all]
+gdown==4.2.1 
+scipy 
+matplotlib 
+tqdm 
+pandas
+torch
+scikit-learn
+torchvision
+albumentations
+segmentation-models-pytorch==0.3.3
+kaggle
+mmengine
+# -e . # Install this project

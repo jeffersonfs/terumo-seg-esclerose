@@ -16,17 +16,14 @@ pip install terumo_seg_esclerose
 ## Usage
 
 ```py
-from terumo_seg_esclerose import BaseClass
-from terumo_seg_esclerose import base_function
+from terumo_seg_esclerose.cli import run_predict
 
-BaseClass().base_method()
-base_function()
+quantity_sclerosis = run_predict(image_path, config_path)
 ```
 
 ```bash
-$ python -m terumo_seg_esclerose
+$ python -m terumo_seg_esclerose run-predict <image> ./configs/tiny/tiny-efficientnetb0-unet-pipeline.py
 #or
-$ terumo_seg_esclerose
 ```
 
 ## Development
